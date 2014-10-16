@@ -53,7 +53,7 @@ public:
 extern Coro_stack& co_stack();
 
 template< typename PromiseType, typename FooType >
-auto set_value(PromiseType&& promise, FooType&& foo) -> typename std::enable_if< std::is_same< typename function_traits< typename FooType >::return_type, void >::value>::type
+auto set_value(PromiseType&& promise, FooType&& foo) -> typename std::enable_if< std::is_same< typename function_traits< FooType >::return_type, void >::value>::type
 {
 	try {
 		foo();
@@ -65,7 +65,7 @@ auto set_value(PromiseType&& promise, FooType&& foo) -> typename std::enable_if<
 }
 
 template< typename PromiseType, typename FooType > 
-auto set_value(PromiseType&& promise, FooType&& foo) -> typename std::enable_if< !std::is_same< typename function_traits< typename FooType >::return_type, void >::value>::type
+auto set_value(PromiseType&& promise, FooType&& foo) -> typename std::enable_if< !std::is_same< typename function_traits< FooType >::return_type, void >::value>::type
 {
 	try {
 		promise.set_value(foo());
