@@ -81,7 +81,7 @@ template< typename FutureValue > struct Task < boost::future< FutureValue > > : 
 {
 	using super = typename boost::future< FutureValue >;
 	using FutureType = typename boost::future < FutureValue >;
-	using Result = typename FutureValue; 
+	using Result = FutureValue;
 	
 	// LIFECYCLE 
 

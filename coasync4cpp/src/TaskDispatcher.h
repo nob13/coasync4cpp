@@ -9,6 +9,7 @@
 #include <future>
 
 #include "boost/thread/tss.hpp"
+#include "boost/noncopyable.hpp"
 
 #include "type_at_pos.h"
 
